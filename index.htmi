@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aperio_vision Pro | Forex Intraday Trading Cohort</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Technical Trading Chart Grid */
+    .trading-grid {
+      background-size: 60px 60px;
+      background-image: 
+        linear-gradient(to right, rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+    }
+
+    /* Animated Horizontal Price Level Line */
+    @keyframes scanline {
+      0% { transform: translateY(-100%); opacity: 0; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(1000%); opacity: 0; }
+    }
+    .animate-scanline {
+      animation: scanline 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Minimal Candlestick Drift */
+    @keyframes float-candle {
+      0%, 100% { transform: translateY(0px); opacity: 0.15; }
+      50% { transform: translateY(-18px); opacity: 0.35; }
+    }
+    @keyframes float-candle-reverse {
+      0%, 100% { transform: translateY(0px); opacity: 0.12; }
+      50% { transform: translateY(16px); opacity: 0.3; }
+    }
+    .candle-float-1 { animation: float-candle 7s ease-in-out infinite; }
+    .candle-float-2 { animation: float-candle-reverse 9s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased relative min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+
+  <!-- Minimal Trading Ambient Background -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute inset-0 trading-grid"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(16,185,129,0.18),transparent)]"></div>
+    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent animate-scanline"></div>
+
+    <!-- Floating Minimal Candlestick Vectors (Left Flank) -->
+    <div class="absolute left-8 top-1/4 flex items-end gap-3 candle-float-1">
+      <div class="flex flex-col items-center">
+        <div class="w-[1px] h-4 bg-emerald-500/40"></div>
+        <div class="w-3 h-14 bg-emerald-500/20 border border-emerald-500/50 rounded-xs"></div>
+        <div class="w-[1px] h-6 bg-emerald-500/40"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-[1px] h-3 bg-emerald-500/40"></div>
+        <div class="w-3 h-20 bg-emerald-500/30 border border-emerald-400/60 rounded-xs"></div>
+        <div class="w-[1px] h-4 bg-emerald-500/40"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-[1px] h-6 bg-rose-500/40"></div>
+        <div class="w-3 h-10 bg-rose-500/20 border border-rose-500/50 rounded-xs"></div>
+        <div class="w-[1px] h-3 bg-rose-500/40"></div>
+      </div>
+    </div>
+
+    <!-- Floating Minimal Candlestick Vectors (Right Flank) -->
+    <div class="absolute right-12 top-1/3 flex items-end gap-3 candle-float-2">
+      <div class="flex flex-col items-center">
+        <div class="w-[1px] h-5 bg-rose-500/40"></div>
+        <div class="w-3 h-16 bg-rose-500/20 border border-rose-500/50 rounded-xs"></div>
+        <div class="w-[1px] h-4 bg-rose-500/40"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-[1px] h-4 bg-emerald-500/40"></div>
+        <div class="w-3 h-24 bg-emerald-500/30 border border-emerald-400/60 rounded-xs"></div>
+        <div class="w-[1px] h-8 bg-emerald-500/40"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-[1px] h-3 bg-emerald-500/40"></div>
+        <div class="w-3 h-12 bg-emerald-500/20 border border-emerald-500/50 rounded-xs"></div>
+        <div class="w-[1px] h-5 bg-emerald-500/40"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="font-bold text-lg tracking-tight text-emerald-400">Aperio_vision<span class="text-white">Pro</span></div>
+      <a href="#register" class="bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-semibold px-4 py-2 rounded-lg transition shadow-md shadow-emerald-500/10">Join Live Desk</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-4xl mx-auto px-6 pt-16 pb-12 text-center relative">
+    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full mb-6 backdrop-blur-sm">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Trade London & New York Sessions Live
+    </span>
+    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+      Master Forex Intraday Trading. <br class="hidden sm:inline" />
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Compete on the Global Stage.</span>
+    </h1>
+    <p class="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+      Empowering next-generation Indian traders with real institutional orderflow, liquidity sweeps, and structured risk models to consistently trade international FX markets.
+    </p>
+
+    <!-- Quick Stats Bar -->
+    <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto py-3 px-4 bg-neutral-900/50 border border-neutral-800/80 rounded-xl text-center backdrop-blur">
+      <div>
+        <div class="text-emerald-400 font-bold text-base sm:text-lg">London/NY</div>
+        <div class="text-neutral-500 text-xs">Session Timings</div>
+      </div>
+      <div class="border-x border-neutral-800">
+        <div class="text-emerald-400 font-bold text-base sm:text-lg">1:3+ R:R</div>
+        <div class="text-neutral-500 text-xs">Risk Framework</div>
+      </div>
+      <div>
+        <div class="text-emerald-400 font-bold text-base sm:text-lg">Live Zoom</div>
+        <div class="text-neutral-500 text-xs">Real-Time Execution</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Pillars -->
+  <section class="max-w-5xl mx-auto px-6 py-6">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-6 bg-neutral-900/60 backdrop-blur-md border border-neutral-800 rounded-xl hover:border-emerald-500/40 transition">
+        <div class="text-emerald-400 text-xl font-bold mb-2">01. Live Market Execution</div>
+        <p class="text-neutral-400 text-sm">Step-by-step breakdown of EUR/USD, GBP/USD, and XAU/USD during live high-volume sessions.</p>
+      </div>
+      <div class="p-6 bg-neutral-900/60 backdrop-blur-md border border-neutral-800 rounded-xl hover:border-emerald-500/40 transition">
+        <div class="text-emerald-400 text-xl font-bold mb-2">02. Institutional Order Flow</div>
+        <p class="text-neutral-400 text-sm">Learn how central banks and liquidity providers move price—stop hunting, imbalance fills, and fair value gaps.</p>
+      </div>
+      <div class="p-6 bg-neutral-900/60 backdrop-blur-md border border-neutral-800 rounded-xl hover:border-emerald-500/40 transition">
+        <div class="text-emerald-400 text-xl font-bold mb-2">03. Private FX Desk & Alerts</div>
+        <p class="text-neutral-400 text-sm">Access to the private WhatsApp group for pre-market key levels, news event breakdowns, and Zoom links.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Sneak Peek Section -->
+  <section class="max-w-5xl mx-auto px-6 py-12 border-t border-neutral-900/80">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Inside Look: What You Get Every Week</h2>
+      <p class="text-neutral-400 text-sm sm:text-base">High-probability intraday blueprints and clear, repeatable execution frameworks.</p>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-neutral-900/60 backdrop-blur-md border border-neutral-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 transition">
+        <div class="aspect-video w-full bg-neutral-800 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=60" alt="Live Chart & Strategy Breakdown" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold text-white text-base">Liquidity & Order Flow Models</h4>
+          <p class="text-neutral-400 text-xs mt-1">Real-time identification of session high/low sweeps and institutional mitigation zones.</p>
+        </div>
+      </div>
+
+      <div class="bg-neutral-900/60 backdrop-blur-md border border-neutral-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 transition">
+        <div class="aspect-video w-full bg-neutral-800 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60" alt="Frameworks and Templates" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold text-white text-base">Proprietary Risk Management Rulebook</h4>
+          <p class="text-neutral-400 text-xs mt-1">Position sizing templates, capital preservation frameworks, and psychological checklists.</p>
+        </div>
+      </div>
+
+      <div class="bg-neutral-900/60 backdrop-blur-md border border-neutral-800 rounded-xl overflow-hidden group group hover:border-emerald-500/50 transition">
+        <div class="aspect-video w-full bg-neutral-800 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=60" alt="Live Q&A Sessions" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold text-white text-base">Live Hot Seats & Chart Teardowns</h4>
+          <p class="text-neutral-400 text-xs mt-1">Direct feedback on your personal trade logs and live Q&A via Zoom screen shares.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon / Future Products Section -->
+  <section class="max-w-5xl mx-auto px-6 py-12 border-t border-neutral-900/80">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full mb-3">
+        Pipeline
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Upcoming Ecosystem & Tools</h2>
+      <p class="text-neutral-400 text-sm sm:text-base">Advanced algorithmic indicators, funded account bootcamps, and 1-on-1 private desk access.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Product 1 -->
+      <div class="relative bg-neutral-900/40 backdrop-blur-md border border-neutral-800/80 rounded-xl p-6 flex flex-col justify-between overflow-hidden group hover:border-neutral-700 transition">
+        <div class="absolute -right-12 top-6 rotate-45 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold py-1 px-12 tracking-wider uppercase">
+          Coming Soon
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-mono text-sm mb-4 border border-emerald-500/20">
+            📊
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Aperio Algo Engine</h3>
+          <p class="text-neutral-400 text-xs leading-relaxed mb-4">
+            Custom automated Pine Script suite for TradingView that marks institutional session highs/lows, imbalance zones, and real-time volume sweeps.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-neutral-800/60 flex items-center justify-between text-xs text-neutral-500 font-medium">
+          <span>TradingView Script</span>
+          <span class="text-emerald-400/80">Q4 Release</span>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="relative bg-neutral-900/40 backdrop-blur-md border border-neutral-800/80 rounded-xl p-6 flex flex-col justify-between overflow-hidden group hover:border-neutral-700 transition">
+        <div class="absolute -right-12 top-6 rotate-45 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold py-1 px-12 tracking-wider uppercase">
+          Coming Soon
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-mono text-sm mb-4 border border-emerald-500/20">
+            🏆
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Prop Firm Accelerator</h3>
+          <p class="text-neutral-400 text-xs leading-relaxed mb-4">
+            Intensive 4-week pass-guarantee roadmap with strict drawdown management rules to pass $50K–$200K funded evaluation challenges.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-neutral-800/60 flex items-center justify-between text-xs text-neutral-500 font-medium">
+          <span>Cohort Bootcamp</span>
+          <span class="text-emerald-400/80">Waitlist Open</span>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="relative bg-neutral-900/40 backdrop-blur-md border border-neutral-800/80 rounded-xl p-6 flex flex-col justify-between overflow-hidden group hover:border-neutral-700 transition">
+        <div class="absolute -right-12 top-6 rotate-45 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold py-1 px-12 tracking-wider uppercase">
+          Coming Soon
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-mono text-sm mb-4 border border-emerald-500/20">
+            🎯
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">1-on-1 Desk Mentorship</h3>
+          <p class="text-neutral-400 text-xs leading-relaxed mb-4">
+            Private weekly live chart audits, personalized trading psychology reviews, and custom portfolio risk structuring directly with lead instructors.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-neutral-800/60 flex items-center justify-between text-xs text-neutral-500 font-medium">
+          <span>Private Access</span>
+          <span class="text-emerald-400/80">Limited 5 Seats</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lead Capture / Registration Section -->
+  <section id="register" class="max-w-xl mx-auto px-6 py-12">
+    <div class="bg-neutral-900/70 backdrop-blur-xl border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="flex justify-between items-baseline mb-6">
+        <div>
+          <h3 class="text-xl font-bold">Join the Live Trading Desk</h3>
+          <p class="text-neutral-400 text-sm">Weekly Live Cohort & Mentorship</p>
+        </div>
+        <div class="text-right">
+          <span class="text-3xl font-extrabold text-emerald-400">₹200</span>
+          <span class="text-neutral-400 text-sm">/week</span>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="leadForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-neutral-400 mb-1">Full Name</label>
+          <input type="text" id="custName" name="name" required placeholder="John Doe" class="w-full bg-neutral-950/80 border border-neutral-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-neutral-400 mb-1">Email Address</label>
+          <input type="email" id="custEmail" name="email" required placeholder="john@example.com" class="w-full bg-neutral-950/80 border border-neutral-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-neutral-400 mb-1">WhatsApp Number (For Zoom Link & Pre-Market Levels)</label>
+          <input type="tel" id="custPhone" name="phone" required placeholder="9876543210" class="w-full bg-neutral-950/80 border border-neutral-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition" />
+        </div>
+
+        <button type="submit" class="w-full mt-6 bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold py-3.5 px-4 rounded-lg transition duration-200 shadow-lg shadow-emerald-500/20">
+          Proceed to Payment (₹200) →
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Redirect / Lead Capture Script -->
+  <script>
+    const form = document.getElementById('leadForm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('custName').value;
+      const email = document.getElementById('custEmail').value;
+      const phone = document.getElementById('custPhone').value;
+
+      // Replace with your actual Razorpay Payment Page URL
+      const razorpayPageUrl = "https://rzp.io/l/YOUR_PAYMENT_LINK";
+
+      window.location.href = `${razorpayPageUrl}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+    });
+  </script>
+</body>
+</html>
